@@ -35,5 +35,5 @@ function ps_cache_flushed() {
 }
 
 function ps_cache_failed() {
-        echo "<div id='message' class='updated fade'><p><strong>".__('Pagespeed cache failed to purge!', 'ps-cache-fail')."</strong></p></div>";
+        echo "<div id='message' class='error'><p><strong>".__('Pagespeed cache failed to purge!', 'ps-cache-fail')."</strong></p></div>";
 }
