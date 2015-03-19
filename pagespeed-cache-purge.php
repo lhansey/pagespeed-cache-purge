@@ -8,6 +8,7 @@
  * Author URI: http://lukehansey.com
  * License: GPL2
  */
+add_action('admin_bar_menu', 'pagespeed_dumpnow_adminbar', 101);
 
 if ($_GET['ps_flush_all']) {
         $resp = wp_remote_get(home_url() . "/pagespeed_admin/cache?purge=*");
@@ -17,8 +18,6 @@ if ($_GET['ps_flush_all']) {
                 add_action( 'admin_notices' , 'ps_cache_failed');
         }
 }
-
-add_action('admin_bar_menu', 'pagespeed_dumpnow_adminbar', 101);
 
 function pagespeed_dumpnow_adminbar($admin_bar){
         $admin_bar->add_menu( array(
