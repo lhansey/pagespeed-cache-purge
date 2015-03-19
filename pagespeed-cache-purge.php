@@ -11,12 +11,11 @@
 
 if ($_GET['ps_flush_all']) {
         $resp = wp_remote_get(home_url() . "/pagespeed_admin/cache?purge=*");
-        if ($resp['body'] == 'Purge successful') {
+        if ($resp['body'] == 'Purge successful' && $resp['headers']['x-cache'] == 'MISS') {
                 add_action( 'admin_notices' , 'ps_cache_flushed');
         } else {
                 add_action( 'admin_notices' , 'ps_cache_failed');
         }
-        print_r($resp);
 }
 
 add_action('admin_bar_menu', 'pagespeed_dumpnow_adminbar', 101);
