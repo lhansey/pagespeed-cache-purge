@@ -26,7 +26,6 @@ function pagespeed_init() {
                         }
                 }
         }
-
 }
 
 function pagespeed_dumpnow_adminbar($admin_bar){
