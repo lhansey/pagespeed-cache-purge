@@ -14,7 +14,7 @@ add_action('init', 'pagespeed_init');
 
 function pagespeed_init() {
         if (current_user_can('activate_plugins')) {
-                add_action('admin_bar_menu', 'pagespeed_dumpnow_adminbar', 200);
+                add_action('admin_bar_menu', 'pagespeed_init_adminbar', 200);
         }
         if (isset($_GET['ps_flush_all']) && check_admin_referer('ps-cache-purge','_psnonce')) {
                 if (current_user_can('activate_plugins')) {
@@ -28,9 +28,9 @@ function pagespeed_init() {
         }
 }
 
-function pagespeed_dumpnow_adminbar($admin_bar){
+function pagespeed_initadminbar($admin_bar){
         $admin_bar->add_menu( array(
-                'id'    => 'purge-pagespeed-cache-all',
+                'id'    => 'purge-pagespeed-cache',
                 'title' => 'Purge Pagespeed',
                 'href'  => wp_nonce_url(add_query_arg( array('ps_flush_all' => 1)  ), 'ps-cache-purge', '_psnonce'),
                 'meta'  => array(
