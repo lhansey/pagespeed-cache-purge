@@ -19,7 +19,7 @@ function pagespeed_init() {
         if (isset($_GET['ps_flush_all']) && check_admin_referer('ps-cache-purge','_psnonce')) {
                 if (current_user_can('activate_plugins')) {
                         $resp = wp_remote_get(PAGESPEED_PURGE_URL);
-                        if ($resp['body'] == 'Purge successful' && $resp['headers']['x-cache'] == "MISS") {
+                        if ($resp['body'] == 'Purge successful' && ( !isset($resp['headers']['x-cache']) || $resp['headers']['x-cache'] == "MISS" ) ) {
                                 add_action( 'admin_notices' , 'pagespeed_cache_flushed');
                         } else {
                                 add_action( 'admin_notices' , 'pagespeed_cache_failed');
@@ -47,4 +47,3 @@ function pagespeed_cache_flushed() {
 function pagespeed_cache_failed() {
         echo "<div id='message' class='error'><p><strong>".__('Pagespeed cache failed to purge!', 'ps-cache-purge')."</strong></p></div>";
 }
-
