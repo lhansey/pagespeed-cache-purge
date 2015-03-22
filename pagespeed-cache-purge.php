@@ -9,7 +9,7 @@
  * License: GPL2
  */
 
-define('pagespeed_purge_url', home_url() . '/pagespeed_admin/cache?purge=*');
+define('PAGESPEED_PURGE_URL', home_url() . '/pagespeed_admin/cache?purge=*');
 add_action('init', 'pagespeed_init');
 
 function pagespeed_init() {
@@ -18,7 +18,7 @@ function pagespeed_init() {
         }
         if (isset($_GET['ps_flush_all']) && check_admin_referer('ps-cache-purge','_psnonce')) {
                 if (current_user_can('activate_plugins')) {
-                        $resp = wp_remote_get(pagespeed_purge_url);
+                        $resp = wp_remote_get(PAGESPEED_PURGE_URL);
                         if ($resp['body'] == 'Purge successful' && $resp['headers']['x-cache'] == "MISS") {
                                 add_action( 'admin_notices' , 'pagespeed_cache_flushed');
                         } else {
