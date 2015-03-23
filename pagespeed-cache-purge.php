@@ -26,9 +26,10 @@ function pagespeed_init() {
                         }
                 }
         }
+
 }
 
-function pagespeed_initadminbar($admin_bar){
+function pagespeed_init_adminbar($admin_bar){
         $admin_bar->add_menu( array(
                 'id'    => 'purge-pagespeed-cache',
                 'title' => 'Purge Pagespeed',
@@ -46,3 +47,4 @@ function pagespeed_cache_flushed() {
 function pagespeed_cache_failed() {
         echo "<div id='message' class='error'><p><strong>".__('Pagespeed cache failed to purge!', 'ps-cache-purge')."</strong></p></div>";
 }
+
