@@ -7,10 +7,8 @@
  * Author: Luke Hansey
  * Author URI: http://lukehansey.com
  * License: GPL2
- **/
- 
+ */
 
-// test test
 define('PAGESPEED_PURGE_URL', home_url() . '/pagespeed_admin/cache?purge=*');
 add_action('init', 'pagespeed_init');
 
